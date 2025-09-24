@@ -11,8 +11,6 @@ const translations = {
         // Headings
         liveStatus: 'Live Bus Status',
         bookTicket: 'Book Your Ticket',
-        yourEcoPoints: 'Your Eco-Points',
-        availableRewards: 'Available Rewards',
         profileSettings: 'Profile & Settings',
         language: 'Language',
         mySubscription: 'My Subscription',
@@ -24,7 +22,6 @@ const translations = {
         // Nav
         home: 'Home',
         ticket: 'Ticket',
-        rewards: 'Rewards',
         profile: 'Profile',
         // Bus Status
         onTime: 'On Time',
@@ -37,7 +34,6 @@ const translations = {
         crowd: 'Crowd',
         share: 'Share',
         // Other
-        ecoPointsSub: 'Keep traveling green to earn more rewards!',
         searchPlaceholder: 'Search for bus or route...',
         alternateRoute: 'Alternate Route Suggested',
         route: 'Route',
@@ -50,15 +46,15 @@ const translations = {
     },
     hi: {
         // Headings
-        liveStatus: 'लाइव बस स्थिति', bookTicket: 'अपनी टिकट बुक करें', yourEcoPoints: 'आपके इको-पॉइंट्स', availableRewards: 'उपलब्ध पुरस्कार', profileSettings: 'प्रोफ़ाइल और सेटिंग्स', language: 'भाषा', mySubscription: 'मेरी सदस्यता',
+        liveStatus: 'लाइव बस स्थिति', bookTicket: 'अपनी टिकट बुक करें', profileSettings: 'प्रोफ़ाइल और सेटिंग्स', language: 'भाषा', mySubscription: 'मेरी सदस्यता',
         // Form & Buttons
         from: 'से', to: 'तक', passengers: 'यात्री', bookAndPay: 'बुक करें और भुगतान करें',
         // Nav
-        home: 'होम', ticket: 'टिकट', rewards: 'पुरस्कार', profile: 'प्रोफ़ाइल',
+        home: 'होम', ticket: 'टिकट', profile: 'प्रोफ़ाइल',
         // Bus Status
         onTime: 'समय पर', delay: 'देरी', late: 'देर', seatsAvailable: 'सीटें उपलब्ध हैं', halfFull: 'आधा भरा हुआ', likelyFull: 'संभवतः भरा हुआ', eta: 'ETA', crowd: 'भीड़', share: 'शेयर करें',
         // Other
-        ecoPointsSub: 'अधिक पुरस्कार अर्जित करने के लिए हरित यात्रा करते रहें!', searchPlaceholder: 'बस या मार्ग खोजें...', alternateRoute: 'वैकल्पिक मार्ग सुझाया गया', route: 'मार्ग', stops: 'स्टॉप (ऑफ़लाइन मानचित्र)', rateThisBus: 'इस बस को रेट करें', excellent: 'उत्कृष्ट', average: 'औसत', poor: 'खराब', getTripSummary: 'यात्रा सारांश प्राप्त करें'
+        searchPlaceholder: 'बस या मार्ग खोजें...', alternateRoute: 'वैकल्पिक मार्ग सुझाया गया', route: 'मार्ग', stops: 'स्टॉप (ऑफ़लाइन मानचित्र)', rateThisBus: 'इस बस को रेट करें', excellent: 'उत्कृष्ट', average: 'औसत', poor: 'खराब', getTripSummary: 'यात्रा सारांश प्राप्त करें'
     }
 };
 
@@ -67,7 +63,6 @@ let currentLanguage = 'en';
 const pages = {
     home: document.getElementById('home-page'),
     ticket: document.getElementById('ticket-page'),
-    rewards: document.getElementById('rewards-page'),
     profile: document.getElementById('profile-page'),
 };
 const navButtons = document.querySelectorAll('.nav-btn');
@@ -91,7 +86,7 @@ function loadCachedData() {
     // Simulate loading last known location from cache
     const cachedLocation = localStorage.getItem('lastLocation');
     if (cachedLocation) {
-        // showToast(`Resuming from ${cachedLocation}`, 2500);
+        // showToast(`Resuming from ${cachedLocation}`, 2500); // Removed this line
     } else {
          // Simulate finding location for the first time
          localStorage.setItem('lastLocation', 'Central Park');
@@ -332,9 +327,6 @@ function applyTranslations() {
     setText('to-label', lang.to);
     setText('passengers-label', lang.passengers);
     setText('book-pay-btn', lang.bookAndPay);
-    setText('eco-points-heading', lang.yourEcoPoints);
-    setText('eco-points-subheading', lang.ecoPointsSub);
-    setText('available-rewards-heading', lang.availableRewards);
     setText('profile-settings-heading', lang.profileSettings);
     setText('language-heading', lang.language);
     setText('subscription-heading', lang.mySubscription);
@@ -342,7 +334,6 @@ function applyTranslations() {
     // Update nav
     setText('nav-home', lang.home);
     setText('nav-ticket', lang.ticket);
-    setText('nav-rewards', lang.rewards);
     setText('nav-profile', lang.profile);
     
     // Update placeholder
@@ -437,4 +428,3 @@ function getTripSummary(busId) {
 
     generateGeminiContent(prompt, summaryResultDiv, summaryButton);
 }
-
